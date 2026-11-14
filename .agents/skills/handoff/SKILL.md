@@ -12,7 +12,7 @@ description: Sync multi-agent project state via HANDOFF.md or generate a copy-pa
      - Which block gets data from where and using what method (`<Block Range> ← <Source Range> via <SUMIFS / XLOOKUP / QUERY / PivotTable / Python>`).
      - Protected columns/formulas not to overwrite.
   3. **Next Steps (`Bước tiếp theo`)** — numbered, exact cell/tab tasks.
-- **Slides / Presentation Callout (`"handoff for slides"` / `"handoff for presentation"` / `"cho tôi hướng dẫn slide cho AI"` / `"bàn giao cho slide"`):** Output a standalone fenced `<20-line` Markdown block in chat (matching EN/VI) formatted to paste into a hidden/skipped `HANDOFF` slide or Slide 1 Speaker Notes in Google Slides or PowerPoint (or generate `.pptx` template if requested) with:
+- **Slides / Presentation Callout (`"handoff for slides"` / `"handoff for presentation"` / `"cho tôi hướng dẫn slide cho AI"` / `"bàn giao cho slide"`):** Output a standalone fenced Markdown block in chat (matching EN/VI) — **no `<20-line` / `<200-token` cap**: let length scale cleanly at `~1–2` concise lines per slide (still zero *"you're... doing..."* / *"bạn là... đang làm..."* fluff). For large decks (`10+` slides), recommend **Slide 1 Speaker Notes** (or each slide's own Speaker Notes) over cramming onto one hidden `HANDOFF` slide (or generate `.pptx` if requested). Include:
   1. **Goal & Audience (`Mục tiêu & Khán giả`)** — deck objective, audience, and layout/brand constraints.
   2. **Per-Slide Content & Visual Assets (`Nội dung & Biểu đồ/Bảng/Hình ảnh từng Slide`)** — for each slide/template slot, explicitly state:
      - Exact text/takeaway to add into the slide.

@@ -31,7 +31,7 @@ llm-handoff/
 Paste this 4-line prompt into ChatGPT, Claude, or Gemini whenever wrapping up a session (or ask in Vietnamese):
 
 ```text
-Summarize our current state in <20 lines (no "you're... doing..." fluff) for the next AI:
+Summarize our current state concisely (<20 lines for code/sheets; 1-2 lines per slide for multi-slide decks — no "you're... doing..." fluff):
 1. Goal & Constraints (do-not-touch files/cells) — for reporting sheets, include Time Range & Update Frequency.
 2. Working / Data Lineage / Visual Assets (for sheets: `<Sheet/Block> <- <Source> via <Method>`; for slides: per-slide content + required media/screenshots, charts, tables).
 3. Broken/WIP & Numbered Next Steps.
@@ -87,8 +87,9 @@ When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and *
 When creating or handing off a `.pptx` / Google Slides template, state clearly per slide:
 1. **What to add into the slide:** Title, key takeaway, and target audience.
 2. **Exact visual assets needed:** Required **media/screenshots** (what screen/product visual + source path), **charts** (chart type + metric + source sheet/range), and **tables** (columns/filter + source).
+3. **Scales With Slide Count (No `<20-Line` Cap):** Keep `~1–2` concise lines per slide; for larger decks (`10+` slides), paste into **Slide 1 Speaker Notes** (or per-slide Speaker Notes) rather than cramming onto a single hidden slide.
 
-**English Slide Template Handoff Example (`<20 lines`):**
+**English Slide Template Handoff Example (scales with slide count):**
 ```markdown
 # Handoff Slides: Q4 Regional Margin Review (Template)
 - **Goal & Audience:** 4-slide Finance executive review (`Q4 2026`) | Keep 16:9 brand layout & placeholder font sizes.
@@ -119,7 +120,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
    - Teammate sends that block back to the developer, who pastes it into Antigravity with: `Sync HANDOFF.md with this update.`
 
 4. **Code/Sheet → Presentation (`handoff for slides` / `handoff for presentation`):**
-   - Developer types `handoff for slides` (or asks the agent to generate a `.pptx` with a hidden `HANDOFF` slide) and pastes the `<20-line` block into a skipped/hidden `HANDOFF` slide or Slide 1 Speaker Notes.
+   - Developer types `handoff for slides` (or asks the agent to generate a `.pptx` with a hidden `HANDOFF` slide) and pastes the slide handoff block (scales with slide count) into Slide 1 Speaker Notes or a skipped/hidden `HANDOFF` slide.
    - Teammate opens Gemini in Google Slides (or PowerPoint Copilot) and prompts:
      > *"Read the HANDOFF slide / Slide 1 notes first, then create or update Slides 2–5."*
 
@@ -146,9 +147,9 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
 | **Cập nhật khi làm xong (`Sheet/Slide → Code`)** | Sheets / Excel / Slides / PPTX | `"Cập nhật lại ô HANDOFF!A1 (hoặc slide HANDOFF) với những việc vừa hoàn thành và bước tiếp theo cho dev."` |
 | **Đồng bộ lại vào Code** | Antigravity / Cursor | `"Đồng bộ HANDOFF.md theo nội dung này: <dán nội dung HANDOFF>"` |
 
-### Ví dụ khối bàn giao Tiếng Việt (`<20 dòng`, không cần *"Bạn là... đang làm..."*)
+### Ví dụ khối bàn giao Tiếng Việt (Không cần *"Bạn là... đang làm..."*)
 
-**1. Bàn giao file Báo cáo Excel / Google Sheets (`HANDOFF!A1` — ghi rõ kỳ báo cáo, tần suất & nguồn từng sheet/block):**
+**1. Bàn giao file Báo cáo Excel / Google Sheets (`HANDOFF!A1`, `<20 dòng` — ghi rõ kỳ báo cáo, tần suất & nguồn từng sheet/block):**
 ```markdown
 # Bàn giao Báo cáo: Biên lợi nhuận Q4
 - **Mục tiêu & Tần suất:** Tổng hợp biên lợi nhuận Q4 2026 (`2026-10-01..2026-12-31`) | Cập nhật mỗi thứ Hai 09:00.
@@ -162,7 +163,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
   2. Ở `Raw_Orders!G2:G500`, gắn cờ `"REVIEW"` nếu `Lợi nhuận / Doanh thu < 0.15`, ngược lại `"OK"`.
 ```
 
-**2. Bàn giao Slide / PowerPoint Template (Slide `HANDOFF` ẩn hoặc Speaker Notes Slide 1 — ghi rõ cần thêm gì vào từng slide):**
+**2. Bàn giao Slide / PowerPoint Template (Độ dài linh hoạt theo số lượng slide — ưu tiên dán vào Speaker Notes Slide 1 với bài nhiều slide):**
 ```markdown
 # Bàn giao Slide: Báo cáo Biên lợi nhuận Q4 (Template)
 - **Mục tiêu & Khán giả:** Báo cáo Ban Tài chính Q4 (`4 slide`, giữ nguyên layout/font chuẩn của template).
