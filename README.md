@@ -32,7 +32,7 @@ New-Item -ItemType Directory -Force .agents/skills/handoff | Out-Null; curl.exe 
 | Tool | Trigger | Action |
 | :--- | :--- | :--- |
 | **Google Jules** | Automatic | Reads `AGENTS.md` on every task/issue and updates `HANDOFF.md` in its PR. |
-| **Antigravity** | Automatic | Auto-loads `AGENTS.md` & `.agents/skills/handoff/SKILL.md`; reads `HANDOFF.md` on start and updates on wrap-up. Type `handoff for sheet` (or `bàn giao cho sheet`) to export. |
+| **Antigravity** | Automatic | Auto-loads `AGENTS.md` & `.agents/skills/handoff/SKILL.md`; reads `HANDOFF.md` on start and updates on wrap-up. Type `handoff for sheet`, `cho tôi hướng dẫn gg sheet cho AI`, or `viết hướng dẫn cho llm` to export. |
 | **Cursor / Copilot** | `@AGENTS.md` | Mention `@AGENTS.md` at session start/end (or auto-loaded in supported versions). |
 | **Gemini in Google Sheets / Excel Copilot** | `HANDOFF!A1` | Paste the exported Markdown block into cell `A1` of a `HANDOFF` tab (or open the generated `.xlsx`), then prompt: *"Read the HANDOFF tab first, then complete Next Step 1."* |
 
@@ -64,7 +64,8 @@ New-Item -ItemType Directory -Force .agents/skills/handoff | Out-Null; curl.exe 
 | Giai đoạn | Nơi gõ lệnh | Câu lệnh mẫu (Tiếng Việt) |
 | :--- | :--- | :--- |
 | **Cài đặt vào dự án** | Antigravity / Cursor | `"Cài đặt https://github.com/minhphuc0101/llm-handoff vào dự án này"` |
-| **Xuất khối Markdown (`Code → Sheet/Excel`)** | Antigravity / Cursor | `"bàn giao cho sheet"` hoặc `"bàn giao qua Excel"` hoặc `"xuất handoff"` |
+| **Tạo / cập nhật `HANDOFF.md` cho LLM khác** | Antigravity / Cursor | `"viết hướng dẫn cho llm"` hoặc `"viết md hướng dẫn"` hoặc `"tạo file hướng dẫn AI"` |
+| **Xuất khối Markdown (`Code → Sheet/Excel`)** | Antigravity / Cursor | `"cho tôi hướng dẫn gg sheet cho AI"` (hoặc `"bàn giao cho sheet"` / `"bàn giao qua Excel"`) |
 | **Xuất trực tiếp file `.xlsx`** | Antigravity / Cursor | `"Cập nhật HANDOFF.md và tạo file Excel bàn giao có tab HANDOFF ở ô A1"` |
 | **Làm việc trong Sheet / Excel** | Gemini (Sheets) / Copilot (Excel) | `"Đọc tab HANDOFF trước để nắm mục tiêu và quy tắc, sau đó thực hiện Bước tiếp theo 1–3."` |
 | **Cập nhật khi làm xong (`Sheet → Code`)** | Gemini (Sheets) / Copilot (Excel) | `"Cập nhật lại ô HANDOFF!A1 với những việc vừa hoàn thành và bước tiếp theo cho dev."` |
