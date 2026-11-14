@@ -1,0 +1,8 @@
+# Handoff State
+- **Goal:** [1-sentence project objective]
+- **Last Agent:** [Model/Tool] | **Date:** YYYY-MM-DD | **Branch:** `main`
+- **Working:** [Completed features & exact file paths]
+- **Broken/WIP:** [Exact `file:line` + error or mock status]
+- **Next Steps:**
+  1. [Exact task 1]
+  2. [Exact task 2]
