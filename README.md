@@ -33,7 +33,7 @@ Paste this 4-line prompt into ChatGPT, Claude, or Gemini whenever wrapping up a 
 ```text
 Summarize our current state in <20 lines (no "you're... doing..." fluff) for the next AI:
 1. Goal & Constraints (do-not-touch files/cells) — for reporting sheets, include Time Range & Update Frequency.
-2. Working / Data Lineage (for reporting sheets: state `<Sheet/Block> <- <Source Sheet/Range> via <Method>`).
+2. Working / Data Lineage / Visual Assets (for sheets: `<Sheet/Block> <- <Source> via <Method>`; for slides: per-slide content + required media/screenshots, charts, tables).
 3. Broken/WIP & Numbered Next Steps.
 ```
 
@@ -80,6 +80,26 @@ When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and *
 - **Next Steps:**
   1. Add `Summary!F4:F8` variance (`Actual_Pct - Target_Pct`) and conditional red highlight if `< 0`.
   2. Flag `Orders` rows where `Net_Margin_USD / Gross_USD < 0.15` as `"REVIEW"` in `Orders!G2:G500`.
+```
+
+## Slides / PowerPoint Template Checklist (`Hidden HANDOFF Slide / Slide 1 Notes`)
+
+When creating or handing off a `.pptx` / Google Slides template, state clearly per slide:
+1. **What to add into the slide:** Title, key takeaway, and target audience.
+2. **Exact visual assets needed:** Required **media/screenshots** (what screen/product visual + source path), **charts** (chart type + metric + source sheet/range), and **tables** (columns/filter + source).
+
+**English Slide Template Handoff Example (`<20 lines`):**
+```markdown
+# Handoff Slides: Q4 Regional Margin Review (Template)
+- **Goal & Audience:** 4-slide Finance executive review (`Q4 2026`) | Keep 16:9 brand layout & placeholder font sizes.
+- **Per-Slide Content & Media/Chart/Table Plan:**
+  - **Slide 1 (Cover & KPI):** Add Q4 headline (`$5,237.5` total net margin) | `[Media: company_logo.png]`
+  - **Slide 2 (Regional Performance):** Add 1-line insight on APAC lead | `[Chart: Clustered Bar of Summary!A4:D8 (Gross vs. Net Margin by Region)]`
+  - **Slide 3 (Low-Margin Review):** Add root-cause bullets for `<15%` orders | `[Table: Orders!A2:G500 filtered where Low_Margin_Flag="REVIEW"]`
+  - **Slide 4 (Action Plan & Proof):** Add discount cap proposal (`max 15%`) | `[Screenshot: pricing_portal_cap.png from QA env]`
+- **Next Steps:**
+  1. Populate Slide 2 chart and Slide 3 filtered table from `Summary` and `Orders`.
+  2. Insert `pricing_portal_cap.png` screenshot into Slide 4 right-hand placeholder.
 ```
 
 ## Team Workflow Summary (Repo ↔ Sheets/Excel ↔ Slides/PPTX)
@@ -142,17 +162,16 @@ When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and *
   2. Ở `Raw_Orders!G2:G500`, gắn cờ `"REVIEW"` nếu `Lợi nhuận / Doanh thu < 0.15`, ngược lại `"OK"`.
 ```
 
-**2. Bàn giao sang Slide / PowerPoint (Slide `HANDOFF` ẩn hoặc Speaker Notes Slide 1):**
+**2. Bàn giao Slide / PowerPoint Template (Slide `HANDOFF` ẩn hoặc Speaker Notes Slide 1 — ghi rõ cần thêm gì vào từng slide):**
 ```markdown
-# Bàn giao Slide: Báo cáo Biên lợi nhuận Q4
-## 1. Mục tiêu & Khán giả
-- Trình bày kết quả biên lợi nhuận ròng Q4 và danh sách đơn cần rà soát cho Ban Tài chính (5 slide, ngắn gọn).
-
-## 2. Số liệu chuẩn & Bố cục Slide
-- Nguồn chuẩn: Tab `Summary` trong `handoff_workbook.xlsx` (NA: $1,285 | EMEA: $1,767.5 | APAC: $2,185).
-- Slide 1: Tiêu đề & Tóm tắt điều hành | Slide 2: Biên lợi nhuận theo khu vực | Slide 3: Đơn hàng gắn cờ `REVIEW` (<15%) | Slide 4: Đề xuất tối ưu chiết khấu & vận chuyển.
-
-## 3. Bước tiếp theo
-1. Tạo Slide 2 với biểu đồ cột so sánh `Net_Margin_USD` theo `Region`.
-2. Đưa bảng các đơn `Low_Margin_Flag = "REVIEW"` vào Slide 3 và đề xuất hướng xử lý ở Slide 4.
+# Bàn giao Slide: Báo cáo Biên lợi nhuận Q4 (Template)
+- **Mục tiêu & Khán giả:** Báo cáo Ban Tài chính Q4 (`4 slide`, giữ nguyên layout/font chuẩn của template).
+- **Nội dung & Tài nguyên cần chèn từng Slide:**
+  - **Slide 1 (Trang bìa & KPI):** Thêm tiêu đề Q4 + tổng lợi nhuận ròng (`$5,237.5`) | `[Media: logo_cty.png]`
+  - **Slide 2 (Hiệu suất khu vực):** Thêm 1 câu nhận xét APAC dẫn đầu | `[Chart: Biểu đồ cột từ Summary!A4:D8 (Doanh thu & Lợi nhuận theo Region)]`
+  - **Slide 3 (Đơn cần rà soát):** Thêm nguyên nhân đơn biên `<15%` | `[Table: Bảng lọc từ Raw_Orders!A2:G500 với cờ "REVIEW"]`
+  - **Slide 4 (Đề xuất hành động):** Thêm đề xuất trần chiết khấu `15%` | `[Screenshot: anh_cau_hinh_chiet_khau.png từ hệ thống QA]`
+- **Bước tiếp theo:**
+  1. Chèn biểu đồ cột vào Slide 2 và bảng đơn `"REVIEW"` vào Slide 3 theo đúng vùng nguồn trên.
+  2. Dán ảnh chụp màn hình vào khung bên phải Slide 4 và hoàn thiện ghi chú trình bày.
 ```

@@ -12,4 +12,9 @@ description: Sync multi-agent project state via HANDOFF.md or generate a copy-pa
      - Which block gets data from where and using what method (`<Block Range> ← <Source Range> via <SUMIFS / XLOOKUP / QUERY / PivotTable / Python>`).
      - Protected columns/formulas not to overwrite.
   3. **Next Steps (`Bước tiếp theo`)** — numbered, exact cell/tab tasks.
-- **Slides / Presentation Callout (`"handoff for slides"` / `"handoff for presentation"` / `"cho tôi hướng dẫn slide cho AI"` / `"bàn giao cho slide"`):** Output a standalone fenced `<20-line` Markdown block in chat (matching EN/VI) with: (1) Goal & Audience (`Mục tiêu & Khán giả`), (2) Verified Metrics & Slide Outline (`Số liệu chính & Bố cục Slide`), and (3) Next Steps (`Bước tiếp theo`)—formatted to paste into a hidden/skipped `HANDOFF` slide or Slide 1 Speaker Notes in Google Slides or PowerPoint (or generate `.pptx` if requested).
+- **Slides / Presentation Callout (`"handoff for slides"` / `"handoff for presentation"` / `"cho tôi hướng dẫn slide cho AI"` / `"bàn giao cho slide"`):** Output a standalone fenced `<20-line` Markdown block in chat (matching EN/VI) formatted to paste into a hidden/skipped `HANDOFF` slide or Slide 1 Speaker Notes in Google Slides or PowerPoint (or generate `.pptx` template if requested) with:
+  1. **Goal & Audience (`Mục tiêu & Khán giả`)** — deck objective, audience, and layout/brand constraints.
+  2. **Per-Slide Content & Visual Assets (`Nội dung & Biểu đồ/Bảng/Hình ảnh từng Slide`)** — for each slide/template slot, explicitly state:
+     - Exact text/takeaway to add into the slide.
+     - Required **media / screenshots** (what screen/asset + file/source), **charts** (chart type + metric + source sheet/range), and **tables** (columns/filter + source).
+  3. **Next Steps (`Bước tiếp theo`)** — numbered tasks to populate or finalize the deck.
