@@ -32,6 +32,7 @@ Paste this 4-line prompt into ChatGPT, Claude, or Gemini whenever wrapping up a 
 
 ```text
 Summarize our current state concisely (<20 lines for code/sheets; 1-2 lines per slide for multi-slide decks — no "you're... doing..." fluff):
+0. For Human: 1 plain sentence telling the teammate taking over what is ready and what to do next.
 1. Goal & Constraints (do-not-touch files/cells) — for reporting sheets, include Time Range & Update Frequency.
 2. Working / Data Lineage / Visual Assets (for sheets: `<Sheet/Block> <- <Source> via <Method>`; for slides: per-slide content + required media/screenshots, charts, tables).
 3. Broken/WIP & Numbered Next Steps.
@@ -61,7 +62,8 @@ New-Item -ItemType Directory -Force .agents/skills/handoff | Out-Null; curl.exe 
 
 ## Reporting Excel / Google Sheets Checklist (`HANDOFF!A1`)
 
-When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and **cadence** cleanly in `<20` lines:
+When handing off a reporting workbook, `HANDOFF!A1` must state the **1-sentence human summary**, **lineage**, and **cadence** cleanly in `<20` lines:
+0. **For Human:** 1 plain sentence telling the teammate taking over what is ready and what to do next.
 1. **Report Window & Update Frequency:** Exact date/period range + refresh cadence (e.g., `Q4 2026 (2026-10-01..2026-12-31) | Weekly every Monday 09:00`).
 2. **Sheet & Block Lineage + Method:**
    - Which sheet pulls from which sheet (`Summary` gets data from `Orders` and `Targets`).
@@ -71,6 +73,7 @@ When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and *
 **English Reporting Handoff Example (`<20 lines`):**
 ```markdown
 # Handoff: Q4 Regional Margin Report
+- **For Human:** Raw Q4 orders and regional summary formulas are ready; open Excel Copilot / Sheets Gemini to add the variance column and flag <15% margin orders.
 - **Goal & Cadence:** Q4 2026 (`2026-10-01..2026-12-31`) weekly margin report | Updated every Monday 09:00.
 - **Constraints:** Do not overwrite `Orders!A:E` (raw import) or `Targets!A:B`.
 - **Data Lineage (`Summary` ← `Orders`, `Targets`):**
@@ -85,6 +88,7 @@ When handing off a reporting workbook, `HANDOFF!A1` must state **lineage** and *
 ## Slides / PowerPoint Template Checklist (`Hidden HANDOFF Slide / Slide 1 Notes`)
 
 When creating or handing off a `.pptx` / Google Slides template, state clearly per slide:
+0. **For Human:** 1 plain sentence telling the teammate taking over what is ready and what to populate/review next.
 1. **What to add into the slide:** Title, key takeaway, and target audience.
 2. **Exact visual assets needed:** Required **media/screenshots** (what screen/product visual + source path), **charts** (chart type + metric + source sheet/range), and **tables** (columns/filter + source).
 3. **Scales With Slide Count (No `<20-Line` Cap):** Keep `~1–2` concise lines per slide; for larger decks (`10+` slides), paste into **Slide 1 Speaker Notes** (or per-slide Speaker Notes) rather than cramming onto a single hidden slide.
@@ -92,6 +96,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
 **English Slide Template Handoff Example (scales with slide count):**
 ```markdown
 # Handoff Slides: Q4 Regional Margin Review (Template)
+- **For Human:** Slide layout and Q4 margin numbers are finalized; populate the Slide 2 bar chart, Slide 3 review table, and Slide 4 QA screenshot.
 - **Goal & Audience:** 4-slide Finance executive review (`Q4 2026`) | Keep 16:9 brand layout & placeholder font sizes.
 - **Per-Slide Content & Media/Chart/Table Plan:**
   - **Slide 1 (Cover & KPI):** Add Q4 headline (`$5,237.5` total net margin) | `[Media: company_logo.png]`
@@ -135,7 +140,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
 
 | Giai đoạn | Nơi gõ lệnh | Câu lệnh mẫu (Tiếng Việt) |
 | :--- | :--- | :--- |
-| **Dùng nhanh không cần cài (Copy-Paste)** | ChatGPT / Claude / Gemini Web | `"Tóm tắt trạng thái dự án <20 dòng (mục tiêu, ràng buộc, luồng dữ liệu sheet/block nếu là báo cáo, việc đã xong, bước tiếp theo) để bàn giao cho AI khác."` |
+| **Dùng nhanh không cần cài (Copy-Paste)** | ChatGPT / Claude / Gemini Web | `"Tóm tắt trạng thái dự án <20 dòng (bắt đầu bằng 1 câu tóm tắt cho người nhận, mục tiêu, ràng buộc, luồng dữ liệu sheet/block nếu là báo cáo, việc đã xong, bước tiếp theo) để bàn giao cho AI khác."` |
 | **Cài đặt vào dự án** | Antigravity / Cursor | `"Cài đặt https://github.com/minhphuc0101/llm-handoff vào dự án này"` |
 | **Tạo / cập nhật `HANDOFF.md` cho LLM khác** | Antigravity / Cursor | `"viết hướng dẫn cho llm"` hoặc `"viết md hướng dẫn"` hoặc `"tạo file hướng dẫn AI"` |
 | **Xuất khối Markdown (`Code → Sheet/Excel`)** | Antigravity / Cursor | `"cho tôi hướng dẫn gg sheet cho AI"` (hoặc `"bàn giao cho sheet"` / `"bàn giao qua Excel"`) |
@@ -152,6 +157,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
 **1. Bàn giao file Báo cáo Excel / Google Sheets (`HANDOFF!A1`, `<20 dòng` — ghi rõ kỳ báo cáo, tần suất & nguồn từng sheet/block):**
 ```markdown
 # Bàn giao Báo cáo: Biên lợi nhuận Q4
+- **Cho người nhận:** Bảng tổng hợp theo khu vực và công thức gốc đã xong; hãy mở Gemini trong Sheets hoặc Excel Copilot để tính cột chênh lệch và gắn cờ đơn biên <15%.
 - **Mục tiêu & Tần suất:** Tổng hợp biên lợi nhuận Q4 2026 (`2026-10-01..2026-12-31`) | Cập nhật mỗi thứ Hai 09:00.
 - **Ràng buộc:** Không sửa tay dữ liệu gốc ở `Raw_Orders!A:F` và bảng chỉ tiêu `Targets!A:B`.
 - **Luồng dữ liệu (`Summary` lấy từ `Raw_Orders` & `Targets`):**
@@ -166,6 +172,7 @@ When creating or handing off a `.pptx` / Google Slides template, state clearly p
 **2. Bàn giao Slide / PowerPoint Template (Độ dài linh hoạt theo số lượng slide — ưu tiên dán vào Speaker Notes Slide 1 với bài nhiều slide):**
 ```markdown
 # Bàn giao Slide: Báo cáo Biên lợi nhuận Q4 (Template)
+- **Cho người nhận:** Khung 4 slide và số liệu Q4 đã chốt; hãy nhờ AI chèn biểu đồ ở Slide 2, bảng đơn `"REVIEW"` ở Slide 3 và dán ảnh chụp QA ở Slide 4.
 - **Mục tiêu & Khán giả:** Báo cáo Ban Tài chính Q4 (`4 slide`, giữ nguyên layout/font chuẩn của template).
 - **Nội dung & Tài nguyên cần chèn từng Slide:**
   - **Slide 1 (Trang bìa & KPI):** Thêm tiêu đề Q4 + tổng lợi nhuận ròng (`$5,237.5`) | `[Media: logo_cty.png]`

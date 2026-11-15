@@ -1,4 +1,5 @@
 # Handoff State
+- **For Human:** [1 plain sentence for the person taking over: what is ready & what they need to do]
 - **Goal:** [1-sentence project objective]
 - **Last Agent:** [Model/Tool] | **Date:** YYYY-MM-DD | **Branch:** `main`
 - **Constraints:** [Locked choices, protected cell ranges, or do-not-touch rules]
